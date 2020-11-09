@@ -1,1 +1,1 @@
-## Actividad N°3 Sentencias sql
+## Actividad N°3 Sentencias SQL
