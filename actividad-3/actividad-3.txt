@@ -1,0 +1,28 @@
+
+// PRIMER QUERY
+SELECT primerNombre, segundoNombre, primerApellido, segundoApellido, nombreTipoCliente, SUM(valorFactura) as ventasTotales
+FROM cliente 
+JOIN tipoCliente ON tipoCliente = idTipoCliente 
+JOIN factura ON cliente.idCliente = factura.idCliente 
+GROUP BY cliente.idCliente;
+
+// SEGUNDO QUERY
+SELECT producto.nombre, factura.numeroFactura 
+FROM detalleFactura 
+JOIN producto ON producto.idProducto = detalleFactura.idProducto
+JOIN factura ON factura.idFactura = detalleFactura.idFactura
+GROUP BY factura.numeroFactura;
+
+// TERCER QUERY
+SELECT tipoCliente.nombreTipoCliente, COUNT(factura.idFactura) as cantidadFacturas, SUM(factura.valorFactura) as valorTotal
+FROM cliente
+JOIN tipoCliente ON cliente.tipoCliente = tipoCliente.idTipoCliente
+JOIN factura ON cliente.idCliente = factura.idCliente
+WHERE factura.valorFactura > 1500000 AND factura.valorFactura < 4500000
+GROUP BY tipoCliente.nombreTipoCliente
+ORDER BY cantidadFacturas DESC;
+
+// CUARTO QUERY
+SELECT factura.numeroFactura as numeroFactura, factura.valorFactura as valorFactura 
+FROM factura;
+
