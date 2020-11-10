@@ -31,8 +31,7 @@
 
             public function getReservas($id, $message = '', $message_type = 'success') {
                 $reservas = $this->model->getReservas($id);
-                echo $id;
-            
+                          
                 $params = array('email' => $this->session->get('email'), 'nombre_rol' => $this->session->get('nombre_rol'), 'show_reservas' => true, 'message_type' => $message_type, 'message' => $message, 'reservas' => $reservas);
                 $this->render(__CLASS__, $params);
             }
